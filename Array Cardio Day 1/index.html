@@ -38,12 +38,12 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
     const inventorYear = inventors.map(inventor => inventor.year).filter(year => year >= 1500 && year < 1600);
-    console.log(inventorYear);
+    console.log('inventorYear',inventorYear);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
     const fullName = inventors.map(inventor => (inventor.first + ' ' + inventor.last));
-    console.log(fullName);
+    console.log('full name', fullName);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
@@ -56,29 +56,54 @@
         return total + (inventor.passed - inventor.year);
     }, 0);
     
-    console.log(lifespan);
+    console.log('total lifespan', lifespan);
 
     // 5. Sort the inventors by years lived
     const inventorLifeSpan = inventors.map(inventor => (inventor.passed - inventor.year)); 
-    console.log(inventorLifeSpan)
+    // console.log(inventorLifeSpan)
 
     const lifespanSort = inventorLifeSpan.sort();
-    console.log(lifespanSort);
+    console.log('inventor lifespan sort', lifespanSort);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-    const category = document.querySelector('.mw-category');
-    const links = Array.from((category.querySelectorAll('a')));
+    // const category = document.querySelector('.mw-category');
+    // const links = Array.from((category.querySelectorAll('a')));
 
-    const de = links.map(link => link.textContent).filter(streetName => streetName.includes('de'));
+    // const de = links.map(link => link.textContent).filter(streetName => streetName.includes('de'));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const sortByLastName = people.sort();
+    console.log('sort people by last name', sortByLastName);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const reducedData = data.reduce(function (a, b) {
+        if (a.indexOf(b) === -1) {
+            a.push(b)
+        }
+        return a
+    }, [])
+
+    console.log(reducedData);
+
+    const data2 = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const sumOfData = data2.reduce((allVehicles, vehicle) => {
+        if (vehicle in allVehicles) {
+            allVehicles[vehicle]++
+        }
+        else {
+            allVehicles[vehicle] = 1
+        }
+        return allVehicles
+    }, {})
+
+    console.log(sumOfData);
+
 
   </script>
 </body>
